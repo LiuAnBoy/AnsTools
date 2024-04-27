@@ -1,3 +1,5 @@
+'use client';
+
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import {
   Button,
@@ -16,6 +18,7 @@ import { FC, useEffect } from 'react';
 
 import { QuotationProps } from '@/app/function/quotation-generator/page';
 
+import styles from '../../../../styles/components/PDFForm.module.scss';
 import TextEditor from '../../TextEditor';
 
 const PDFForm: FC<PDFFormProps> = ({ form, onFinish }) => {
@@ -34,14 +37,7 @@ const PDFForm: FC<PDFFormProps> = ({ form, onFinish }) => {
   }, []);
 
   return (
-    <div
-      style={{
-        width: '375px',
-        height: 'calc(100vh - 168px)',
-        overflowY: 'scroll',
-        padding: '0px 16px 16px 0',
-      }}
-    >
+    <div className={styles.pdf_form_container}>
       <h1 style={{ marginBottom: 24 }}>報價單資訊</h1>
       <Form
         form={form}

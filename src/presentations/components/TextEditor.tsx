@@ -1,9 +1,15 @@
+'use client';
+
 import 'react-quill/dist/quill.snow.css';
 
-import { FC } from 'react';
-import ReactQuill from 'react-quill';
+import dynamic from 'next/dynamic';
+import { FC, useMemo } from 'react';
 
 const TextEditor: FC<TextEditorProps> = ({ value, onChange }) => {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import('react-quill'), { ssr: false }),
+    [],
+  );
   const toolbar = [['bold', 'underline'], [{ list: 'ordered' }], ['link']];
 
   const modules = {

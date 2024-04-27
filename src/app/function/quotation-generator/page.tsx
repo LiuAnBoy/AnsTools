@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import PDFForm from '@/presentations/components/PDF/Quotation/PDFForm';
 import PDFRender from '@/presentations/components/PDF/Quotation/PDFRender';
+import styles from '@/styles/pages/quotation-generator.module.scss';
 
 const QuotationGeneratorPage = () => {
   const [form] = Form.useForm();
@@ -32,9 +33,9 @@ const QuotationGeneratorPage = () => {
 
   return (
     <div>
-      <Space style={{ height: 'calc(100vh - 168px)' }}>
-        {/* <PDFForm form={form} onFinish={onFinish} /> */}
-        {/* <PDFRender data={data} /> */}
+      <Space className={styles.quotation_generator_container}>
+        <PDFForm form={form} onFinish={onFinish} />
+        <PDFRender data={data} />
       </Space>
     </div>
   );

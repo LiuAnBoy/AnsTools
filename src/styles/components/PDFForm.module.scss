@@ -1,9 +1,13 @@
-.quotation_items_field::before {
-  display: inline-block;
-  margin-inline-end: 4px;
-  color: #ff4d4f;
-  font-size: 14px;
-  font-family: SimSun, sans-serif;
-  line-height: 1;
-  content: '*';
+.pdf_form_container {
+  width: 375px;
+  height: calc(100vh - 168px);
+  overflow-y: scroll;
+  padding: 0 16px 16px 0;
+
+  @media screen and (max-width: 768px) {
+    width: calc(100vw - 32px);
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0;
+  }
 }
