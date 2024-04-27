@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "An's Tools",
   description: 'Little tools',
   icons:
-    'https://res.cloudinary.com/cla/image/upload/v1646815386/Portfolio/favicon_hcp9q9_nfsipe.png',
+    'https://res.cloudinary.com/cla/image/upload/v1646815386/Portfolio/Icon/favicon_hcp9q9_nfsipe.png',
   openGraph: {
     title: {
       default: "An's Tools",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     ],
     images: [
       {
-        url: 'https://res.cloudinary.com/cla/image/upload/v1646815386/Portfolio/favicon_hcp9q9_nfsipe.png',
+        url: 'https://res.cloudinary.com/cla/image/upload/v1646815386/Portfolio/Icon/favicon_hcp9q9_nfsipe.png',
         alt: 'hero',
       },
     ],
