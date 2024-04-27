@@ -1,0 +1,187 @@
+@mixin layout{
+  padding: 46px 58px;
+  display: flex;
+}
+
+.quotation_header {
+  @include layout;
+  background-color: #32576B;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.quotation_title {
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 48px;
+}
+
+.quotation_subtitle {
+  font-size: 24px;
+  text-align: center;
+}
+
+.quotation_body {
+  @include layout;
+  flex-direction: column;
+  background-color: #fff;
+  color: #423f3e;
+
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  width: 100%;
+  border-bottom: 1px solid #c1c0c0;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.field_name {
+  padding: 0px 16px 4px 0;
+  font-size: 16px;
+  position: relative;
+  width: 130px;
+  color: #423f3e;
+  letter-spacing: 0.5px;
+}
+
+.field_name::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  height: 30%;
+  right: 0;
+  border-right: 1px solid #c1c0c0;
+}
+
+.field_value {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 130px);
+  color: #423f3e;
+  letter-spacing: 0.5px;
+}
+
+.pdf_table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #c1c0c0;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+
+  & thead tr th {
+    // border: 1px solid #c1c0c0;
+    padding: 8px 10px;
+    background-color: #c8c9ca;
+    color: #423f3e;
+    text-align: center;
+  }
+
+  & tbody tr {
+    min-height: 10%;
+  }
+
+  & tbody tr td {
+    font-size: 14px;
+    border: 0.5px solid #c1c0c0;
+  }
+
+  & tbody tr td div {
+    padding: 8px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: pre-line;
+    color: #423f3e;
+  }
+
+  & tbody tr td:first-child {
+    width: 30%;
+  }
+
+  & tbody tr td:nth-child(2) {
+    width: 40%;
+  }
+
+  & tbody tr td:nth-child(3) {
+    width: 10%;
+  }
+
+  & tbody tr td:nth-child(4) {
+    width: 30%;
+  }
+
+  & tbody tr td span {
+    padding: 14px 28px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: pre-line;
+    color: #423f3e;
+  }
+
+  & tfoot {
+    background-color: #ececec;
+  }
+
+  & tfoot th {
+    color: #423f3e;
+    border: 0.5px solid #c1c0c0;
+    text-align: center;
+  }
+
+  & tfoot td {
+    color: #423f3e;
+    padding: 16px 28px;
+    font-weight: bold;
+    text-align: center;
+    border: 0.5px solid #c1c0c0;
+  }
+}
+
+.pdf_precaution {
+  margin-bottom: 18px;
+  color: #423f3e;
+  font-size: 12px;
+  & > div {
+    font-size: 10px;
+  }
+}
+
+.pdf_info {
+  width: 60%;
+  color: #423f3e;
+  & > img {
+    width: 80px;
+  }
+}
+
+.pdf_info_filed {
+  // padding: 0px 16px 4px 0;
+  font-size: 14px;
+  position: relative;
+  width: 50px;
+  color: #423f3e;
+  margin-right: 12px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.pdf_info_filed::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 20%;
+  height: 60%;
+  right: 0;
+  border-right: 1px solid #c1c0c0;
+}
