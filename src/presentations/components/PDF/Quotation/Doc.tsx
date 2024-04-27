@@ -140,7 +140,7 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
       borderBottom: '1px solid #c1c0c0',
       textAlign: 'center',
       padding: '2px 0',
-      fontSize: 12,
+      fontSize: 10,
     },
     column_body_border_other: {
       borderRight: '1px solid #c1c0c0',
