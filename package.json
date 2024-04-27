@@ -14,7 +14,7 @@
     "@react-pdf/renderer": "^3.4.4",
     "antd": "^5.16.4",
     "dayjs": "^1.11.10",
-    "next": "14.2.3",
+    "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
     "react-pdf-html": "^2.0.4",

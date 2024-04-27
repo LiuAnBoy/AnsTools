@@ -33,8 +33,8 @@ const QuotationGeneratorPage = () => {
   return (
     <div>
       <Space style={{ height: 'calc(100vh - 168px)' }}>
-        <PDFForm form={form} onFinish={onFinish} />
-        <PDFRender data={data} />
+        {/* <PDFForm form={form} onFinish={onFinish} /> */}
+        {/* <PDFRender data={data} /> */}
       </Space>
     </div>
   );
