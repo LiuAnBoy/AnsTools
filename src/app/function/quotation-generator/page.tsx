@@ -1,8 +1,8 @@
 'use client';
 
-import { Form, FormProps, Space } from 'antd';
+import { Form, FormProps, Space, Spin } from 'antd';
 import { Metadata } from 'next';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 import PDFForm from '@/presentations/components/PDF/Quotation/PDFForm';
 import PDFRender from '@/presentations/components/PDF/Quotation/PDFRender';
@@ -34,10 +34,12 @@ const QuotationGeneratorPage = () => {
 
   return (
     <div>
-      <Space className={styles.quotation_generator_container}>
-        <PDFForm form={form} onFinish={onFinish} />
-        <PDFRender data={data} />
-      </Space>
+      <Suspense fallback={<Spin />}>
+        <Space className={styles.quotation_generator_container}>
+          <PDFForm form={form} onFinish={onFinish} />
+          <PDFRender data={data} />
+        </Space>
+      </Suspense>
     </div>
   );
 };
