@@ -14,8 +14,33 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: `An's Tools`,
+  title: "An's Tools",
   description: 'Little tools',
+  icons:
+    'https://res.cloudinary.com/cla/image/upload/v1646815386/Portfolio/favicon_hcp9q9_nfsipe.png',
+  openGraph: {
+    title: {
+      default: "An's Tools",
+      template: "An's Tools",
+    },
+    url: 'https://app.luan.com.tw',
+    siteName: "An's Tools",
+    description: 'Little tools',
+    tags: [
+      'Front-End Developer',
+      'UI/UX Designer',
+      'React',
+      'Next.js',
+      'Front-End',
+      'Tools',
+    ],
+    images: [
+      {
+        url: 'https://res.cloudinary.com/cla/image/upload/v1646815386/Portfolio/favicon_hcp9q9_nfsipe.png',
+        alt: 'hero',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

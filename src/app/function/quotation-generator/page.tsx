@@ -1,6 +1,7 @@
 'use client';
 
 import { Form, FormProps, Space } from 'antd';
+import { Metadata } from 'next';
 import { useState } from 'react';
 
 import PDFForm from '@/presentations/components/PDF/Quotation/PDFForm';
