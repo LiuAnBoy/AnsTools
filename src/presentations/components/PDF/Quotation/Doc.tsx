@@ -16,7 +16,8 @@ import Field from './Field';
 import { PDFRenderProps } from './PDFRender';
 
 const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
-  const priceCount = (items: QuotationProps['items']) => {
+  const priceCount = (items: QuotationProps['items'] | null) => {
+    if (!items) return 'NT$ 0';
     const totalPrice = items.reduce(
       (acc, curr) => acc + parseInt(curr.unit_price),
       0,
@@ -193,10 +194,10 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
     },
   });
 
-  if (!data) return null;
+  // if (!data) return null;
 
   return (
-    <Document title={data.file_name}>
+    <Document title={data ? data.file_name : ''}>
       <Page size="A4" style={styles.page}>
         <View wrap style={styles.header}>
           <Text style={styles.title}>{data ? data.title : '標題'}</Text>
@@ -209,17 +210,24 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
         <View style={styles.body}>
           <View style={styles.info}>
             <View style={{ width: '52%' }}>
-              <Field field="客戶名稱" value={data.customer} />
-              <Field field="聯絡人" value={data.contact_name} />
-              <Field field="聯絡人信箱" value={data.contact_email} />
-              <Field field="案件名稱" value={data.case_name} mb={false} />
+              <Field field="客戶名稱" value={data ? data.customer : ''} />
+              <Field field="聯絡人" value={data ? data.contact_name : ''} />
+              <Field
+                field="聯絡人信箱"
+                value={data ? data.contact_email : ''}
+              />
+              <Field
+                field="案件名稱"
+                value={data ? data.case_name : ''}
+                mb={false}
+              />
             </View>
             <View style={{ width: '40%' }}>
               <Field
                 field="報價日期"
-                value={dayjs(data.quote_date).format('YYYY/MM/DD')}
+                value={data ? dayjs(data.quote_date).format('YYYY/MM/DD') : ''}
               />
-              <Field field="報價人員" value={data.quote_name} />
+              <Field field="報價人員" value={data ? data.quote_name : ''} />
             </View>
           </View>
 
@@ -245,33 +253,37 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
               </Text>
             </View>
 
-            {data.items.map((item, index) => (
-              <View key={index} style={{ flexDirection: 'row', width: '100%' }}>
-                <View style={[styles.column_body_border, { width: '25%' }]}>
-                  <Text>{item.name}</Text>
-                </View>
+            {data &&
+              data.items.map((item, index) => (
+                <View
+                  key={index}
+                  style={{ flexDirection: 'row', width: '100%' }}
+                >
+                  <View style={[styles.column_body_border, { width: '25%' }]}>
+                    <Text>{item.name}</Text>
+                  </View>
 
-                <Html
-                  style={[styles.column_body_border_html, { width: '43%' }]}
-                >
-                  {item.description}
-                </Html>
-                <View
-                  style={[styles.column_body_border_other, { width: '12%' }]}
-                >
-                  <Text>{item.quantity}</Text>
+                  <Html
+                    style={[styles.column_body_border_html, { width: '43%' }]}
+                  >
+                    {item.description}
+                  </Html>
+                  <View
+                    style={[styles.column_body_border_other, { width: '12%' }]}
+                  >
+                    <Text>{item.quantity}</Text>
+                  </View>
+                  <View
+                    style={[styles.column_body_border_other, { width: '20%' }]}
+                  >
+                    <Text>
+                      {item.unit_price
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    </Text>
+                  </View>
                 </View>
-                <View
-                  style={[styles.column_body_border_other, { width: '20%' }]}
-                >
-                  <Text>
-                    {item.unit_price
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  </Text>
-                </View>
-              </View>
-            ))}
+              ))}
             <View>
               <View style={{ flexDirection: 'row', width: '100%' }}>
                 <View style={[styles.column_footer_border, { width: '80%' }]}>
@@ -280,7 +292,7 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
                 <View
                   style={[styles.column_footer_border_other, { width: '20%' }]}
                 >
-                  <Text>{priceCount(data.items)}</Text>
+                  <Text>{priceCount(data && data.items)}</Text>
                 </View>
               </View>
             </View>
@@ -320,7 +332,7 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
                   負責人
                 </Text>
                 <Text style={{ marginRight: 8 }}>|</Text>
-                <Text>{data.name}</Text>
+                <Text>{data ? data.name : ''}</Text>
               </View>
               <View
                 style={{
@@ -337,7 +349,7 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
                   電話
                 </Text>
                 <Text style={{ marginRight: 8 }}>|</Text>
-                <Text>{data.phone}</Text>
+                <Text>{data ? data.phone : ''}</Text>
               </View>
               <View
                 style={{
@@ -354,7 +366,7 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
                   Email
                 </Text>
                 <Text style={{ marginRight: 8 }}>|</Text>
-                <Text>{data.email}</Text>
+                <Text>{data ? data.email : ''}</Text>
               </View>
             </View>
 

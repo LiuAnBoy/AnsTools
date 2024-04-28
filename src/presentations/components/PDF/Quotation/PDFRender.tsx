@@ -1,15 +1,22 @@
 'use client';
 
-import { PDFViewer } from '@react-pdf/renderer';
+import dynamic from 'next/dynamic';
 import { FC } from 'react';
 
 import { QuotationProps } from '@/app/function/quotation-generator/page';
 import styles from '@/styles/components/PDFRender.module.scss';
 
+import Loading from '../../Loading';
 import PDFDoc from './Doc';
 
 const PDFRender: FC<PDFRenderProps> = ({ data }) => {
-  if (!data) return null;
+  const PDFViewer = dynamic(
+    () => import('@react-pdf/renderer').then((mod) => mod.PDFViewer),
+    {
+      ssr: false,
+      loading: () => <Loading />,
+    },
+  );
 
   return (
     <div className={styles.pdf_render_container}>
