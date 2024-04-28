@@ -2,7 +2,6 @@
 
 import { pdf } from '@react-pdf/renderer';
 import { Button } from 'antd';
-import { saveAs } from 'file-saver';
 import dynamic from 'next/dynamic';
 import { FC } from 'react';
 
