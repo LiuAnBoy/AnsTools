@@ -1,5 +1,6 @@
 'use client';
 
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import dynamic from 'next/dynamic';
 import { FC } from 'react';
 
@@ -23,6 +24,19 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
       <PDFViewer className={styles.pdf_viewer}>
         <PDFDoc data={data} />
       </PDFViewer>
+      {data && (
+        <div className={styles.pdf_download_button_container}>
+          <PDFDownloadLink
+            document={<PDFDoc data={data} />}
+            fileName={`${data?.title}.pdf`}
+            className={styles.pdf_download_button}
+          >
+            {({ blob, url, loading, error }) =>
+              loading ? '產生中...' : '下載報價單'
+            }
+          </PDFDownloadLink>
+        </div>
+      )}
     </div>
   );
 };

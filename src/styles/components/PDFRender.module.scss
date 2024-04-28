@@ -1,12 +1,13 @@
 .pdf_render_container {
   width: calc(100vw - 385px);
-  height: calc(100vh - 140px);
+  height: calc(100vh - 150px);
   overflow-y: scroll;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (max-width: 768px) {
     width: calc(100vw - 32px);
-    height: 500px;
+    height: 600px;
 
     overflow-y: auto;
     padding-right: 0;
@@ -21,4 +22,21 @@
     width: calc(100vw - 32px);
     height: 500px;
   }
+}
+
+.pdf_download_button_container {
+  margin-top: 16px;
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.pdf_download_button {
+  background-color: #1c1c20;
+  padding: 6px 16px 8px;
+  color: #fff !important;
+  border-radius: 6px;
 }
