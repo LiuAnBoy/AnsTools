@@ -32,7 +32,6 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
         try {
           await navigator.share({
             files: [file],
-            title: `${data?.title}.pdf`,
           });
           return;
         } catch (error) {
@@ -57,7 +56,9 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
       </PDFViewer>
       {data && (
         <div className={styles.pdf_download_button_container}>
-          <Button onClick={downloadPDF}>下載報價單</Button>
+          <Button type="primary" onClick={downloadPDF}>
+            下載報價單
+          </Button>
         </div>
       )}
     </div>

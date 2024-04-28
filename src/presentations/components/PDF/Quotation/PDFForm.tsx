@@ -235,7 +235,7 @@ const PDFForm: FC<PDFFormProps> = ({ form, onFinish }) => {
           style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}
         >
           <Button type="primary" htmlType="submit">
-            產生PDF
+            產生報價單
           </Button>
         </div>
       </Form>
