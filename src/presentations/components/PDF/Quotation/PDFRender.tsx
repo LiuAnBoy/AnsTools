@@ -23,7 +23,12 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
 
   const downloadPDF = async () => {
     const blob = await pdf(<PDFDoc data={data} />).toBlob();
-    saveAs(blob, `${data?.title}.pdf`);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${data?.title}.pdf`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   return (
