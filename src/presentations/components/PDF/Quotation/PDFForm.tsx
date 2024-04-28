@@ -1,6 +1,10 @@
 'use client';
 
-import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import {
+  InfoCircleOutlined,
+  MinusCircleOutlined,
+  PlusCircleOutlined,
+} from '@ant-design/icons';
 import {
   Button,
   Col,
@@ -47,7 +51,7 @@ const PDFForm: FC<PDFFormProps> = ({ form, onFinish }) => {
         name="quotation"
         style={{ width: '100%' }}
         onFinish={onFinish}
-        initialValues={{ quote_date: dayjs(), quote_name: '陳律安' }}
+        initialValues={{ quote_date: dayjs(), quote_name: '' }}
       >
         <Form.Item<QuotationProps>
           label="檔案名稱"
@@ -184,6 +188,17 @@ const PDFForm: FC<PDFFormProps> = ({ form, onFinish }) => {
           )}
         </Form.List>
         <Divider />
+        <Space
+          style={{
+            alignItems: 'center',
+            marginBottom: 16,
+            color: '#c0c0c0',
+            fontSize: 12,
+          }}
+        >
+          <InfoCircleOutlined />
+          <span>此區於第一次產生報價單後會記錄您的資訊</span>
+        </Space>
         <Form.Item<QuotationProps>
           label="負責人"
           name="name"
