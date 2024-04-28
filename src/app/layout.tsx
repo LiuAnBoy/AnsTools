@@ -1,6 +1,7 @@
 import './globals.css';
 
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { ConfigProvider } from 'antd';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
@@ -56,6 +57,9 @@ export default function RootLayout({
             <AntdLayout>{children}</AntdLayout>
           </ConfigProvider>
         </AntdRegistry>
+        <GoogleAnalytics
+          gaId={process.env.NEXT_GOOGLE_ANALYTICS_ID as string}
+        />
       </body>
     </html>
   );
