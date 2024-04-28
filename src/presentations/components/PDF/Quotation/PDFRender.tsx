@@ -1,6 +1,8 @@
 'use client';
 
-import { PDFDownloadLink } from '@react-pdf/renderer';
+import { pdf } from '@react-pdf/renderer';
+import { Button } from 'antd';
+import { saveAs } from 'file-saver';
 import dynamic from 'next/dynamic';
 import { FC } from 'react';
 
@@ -19,6 +21,11 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
     },
   );
 
+  const downloadPDF = async () => {
+    const blob = await pdf(<PDFDoc data={data} />).toBlob();
+    saveAs(blob, `${data?.title}.pdf`);
+  };
+
   return (
     <div className={styles.pdf_render_container}>
       <PDFViewer className={styles.pdf_viewer}>
@@ -26,15 +33,7 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
       </PDFViewer>
       {data && (
         <div className={styles.pdf_download_button_container}>
-          <PDFDownloadLink
-            document={<PDFDoc data={data} />}
-            fileName={`${data?.title}.pdf`}
-            className={styles.pdf_download_button}
-          >
-            {({ blob, url, loading, error }) =>
-              loading ? '產生中...' : '下載報價單'
-            }
-          </PDFDownloadLink>
+          <Button onClick={downloadPDF}>下載報價單</Button>
         </div>
       )}
     </div>
