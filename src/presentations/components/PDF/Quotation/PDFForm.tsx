@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons';
 import {
   Button,
+  Checkbox,
   Col,
   DatePicker,
   Divider,
@@ -51,7 +52,7 @@ const PDFForm: FC<PDFFormProps> = ({ form, onFinish }) => {
         name="quotation"
         style={{ width: '100%' }}
         onFinish={onFinish}
-        initialValues={{ quote_date: dayjs(), quote_name: '' }}
+        initialValues={{ quote_date: dayjs(), haveTax: false }}
       >
         <Form.Item<QuotationProps>
           label="檔案名稱"
@@ -187,6 +188,13 @@ const PDFForm: FC<PDFFormProps> = ({ form, onFinish }) => {
             </div>
           )}
         </Form.List>
+        <Form.Item<QuotationProps>
+          label="是否含稅"
+          name="haveTax"
+          valuePropName="checked"
+        >
+          <Checkbox />
+        </Form.Item>
         <Divider />
         <Space
           style={{

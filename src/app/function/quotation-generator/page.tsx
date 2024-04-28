@@ -58,6 +58,7 @@ export interface QuotationProps {
   phone: string;
   name: string;
   email: string;
+  haveTax: boolean;
 }
 
 export interface ItemProps {

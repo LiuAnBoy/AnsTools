@@ -287,7 +287,7 @@ const PDFDoc: FC<PDFRenderProps> = ({ data }) => {
             <View>
               <View style={{ flexDirection: 'row', width: '100%' }}>
                 <View style={[styles.column_footer_border, { width: '80%' }]}>
-                  <Text>總價</Text>
+                  <Text>總金額 {data?.haveTax ? '(含稅)' : '(未稅)'}</Text>
                 </View>
                 <View
                   style={[styles.column_footer_border_other, { width: '20%' }]}
