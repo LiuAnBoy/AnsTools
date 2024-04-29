@@ -32,6 +32,7 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
         try {
           await navigator.share({
             files: [file],
+            text: '分享報價單給您。',
           });
           return;
         } catch (error) {
