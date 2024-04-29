@@ -23,8 +23,9 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
   const downloadPDF = async () => {
     const isShareSupported = 'canShare' in navigator;
     const blob = await pdf(<PDFDoc data={data} />).toBlob();
-    const file = new File([blob], `${data?.title}.pdf`, {
-      type: blob.type,
+    const pdfBlob = new Blob([blob], { type: blob.type });
+    const file = new File([pdfBlob], `${data?.title}.pdf`, {
+      type: pdfBlob.type,
     });
     if (isShareSupported && navigator.canShare({ files: [file] })) {
       try {
@@ -36,7 +37,7 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
         console.error('Error sharing:', error);
       }
     }
-    const url = URL.createObjectURL(blob);
+    const url = URL.createObjectURL(pdfBlob);
     const a = document.createElement('a');
     a.href = url;
     a.download = `${data?.title}.pdf`;
