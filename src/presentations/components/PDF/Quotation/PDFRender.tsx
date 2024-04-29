@@ -24,17 +24,19 @@ const PDFRender: FC<PDFRenderProps> = ({ data }) => {
     const isShareSupported = 'canShare' in navigator;
     const blob = await pdf(<PDFDoc data={data} />).toBlob();
     const pdfBlob = new Blob([blob], { type: blob.type });
-    const file = new File([pdfBlob], `${data?.title}.pdf`, {
-      type: pdfBlob.type,
-    });
-    if (isShareSupported && navigator.canShare({ files: [file] })) {
-      try {
-        await navigator.share({
-          files: [file],
-        });
-        return;
-      } catch (error) {
-        console.error('Error sharing:', error);
+    if (isShareSupported) {
+      const file = new File([pdfBlob], `${data?.title}.pdf`, {
+        type: pdfBlob.type,
+      });
+      if (navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            files: [file],
+          });
+          return;
+        } catch (error) {
+          console.error('Error sharing:', error);
+        }
       }
     }
     const url = URL.createObjectURL(pdfBlob);
